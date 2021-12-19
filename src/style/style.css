@@ -1,0 +1,11 @@
+.messages{
+    background-color: rgb(241, 243, 220);
+    color: yellow;
+    font-size: 20px;
+}
+.user{
+    color: rgb(255, 0, 55);
+}
+.bot{
+    color: blue;
+}
