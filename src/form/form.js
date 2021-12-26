@@ -27,7 +27,6 @@ const Form = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <input className="input_area" type="text" ref={inputRef} value={value} onChange={handleChange} /> */}
       <TextField
         type="text" inputRef={inputRef} value={value} onChange={handleChange}
         id="input-with-icon-textfield"
@@ -42,9 +41,6 @@ const Form = ({ onSubmit }) => {
         variant="standard"
       />
       <Button className="myBtnClass" variant="contained" type="submit">отправить</Button>
-      
-     
-      
     </form>
   );
 };
