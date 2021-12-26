@@ -1,0 +1,30 @@
+#root{
+    display: flex;
+    justify-content: flex-start;  
+}
+.messages{
+    background-color: rgb(241, 243, 220);
+    color: yellow;
+    font-size: 20px;
+}
+.user{
+    color: #1976d2;
+}
+.bot{
+    color: red;
+}
+.MuiList-root.MuiList-padding.css-1gnvp42-MuiList-root{
+    padding: 40px;
+}
+.message_block{
+    width: 700px;
+}
+#input-with-icon-textfield{
+    width: 500px;
+    height: 26px;
+    font-size: 15px;
+    color: #1976d2;
+}
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
+    color: #1976d2;
+}
