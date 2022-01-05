@@ -3,44 +3,11 @@ import {BrowserRouter, Link, Routes, Route} from 'react-router-dom';
 import Chats from "./chats/chats";
 import {Home} from "./home/home"
 import { Page404 } from "./page404/page404";
-import Profile from "./profile/profile";
+import { Profile } from "./profile/profile";
 import GutterlessList from "./chatList/chatList"
-import { ProfileContext } from "./utils/context/ProfileContext";
-
-
-
-// список чатов
-let initialChats = [
-    {name: "Комната чата 1", id: "chat1"},
-    {name: "Комната чата 2", id: "chat2"},
-    {name: "Комната чата 3", id: "chat3"},
-]
-
-// создание объекта с чатами
-const initialMessages = initialChats.reduce( (prevArg,nextArg)=>{
-    prevArg[nextArg.id]=[];
-    return prevArg;
-}, {})
 
 
 const App =()=>{
-    // const [name,setName]=useState('default');
-    //const someVar = useContext(ProfileContext)
-
-    const[chats, setChats] = useState(initialChats); // для списка чатов ... 
-    
-    const handleAddChat=()=>{ // попытался сделать добавление чатов, не работает :((
-        setChats(()=>{
-            chats.push({name: `Комната чата ${chats.length + 1}`, id: `chat${chats.length + 1}`});
-        })
-    }
-
-    const[messages, setMessages] = useState(initialMessages) // хук для отслеживания добавлений сообщений в чат
-
-    // логика добавления сообшений в объект сообщений initialMessages
-    const handleAddMessage = (newMessage, chatId) =>{
-        setMessages((prevMess)=>({...prevMess,[chatId]:[...prevMess[chatId], newMessage],}));
-    };
 
     return(
         
@@ -59,11 +26,11 @@ const App =()=>{
             
 
             <Routes>
-                <Route path="/" element={<Home chatList={chats}/>}>
-                    <Route path=":chatId" element={<Chats messages={messages} onAddMessage={handleAddMessage}/>}/>
+                <Route path="/" element={<Home />}>
+                    <Route path=":chatId" element={<Chats />}/>
                 </Route>
-                <Route path="chats" element={<GutterlessList chatList={chats} addChat={handleAddChat}/>}>
-                    <Route path=":chatId" element={<Chats messages={messages} onAddMessage={handleAddMessage}/>}/>
+                <Route path="chats" element={<GutterlessList/>}>
+                    <Route path=":chatId" element={<Chats />}/>
                 </Route>
 
                 <Route path="/profile" element={<Profile />}/>

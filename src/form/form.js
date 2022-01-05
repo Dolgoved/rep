@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@mui/material";
 import TextField from '@mui/material/TextField';
@@ -20,9 +21,9 @@ const Form = ({ onSubmit,  }) => {
     onSubmit(value);
   };
 
-  useEffect(() => 
-    {inputRef.current?.focus()}
-  );
+  useEffect(() => {
+    inputRef.current?.focus();
+  });
 
   return (
     <form onSubmit={handleSubmit}>
