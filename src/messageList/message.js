@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { selectUserName } from "../redux/profile/selectors";
 import { AUTHORS } from "../utils/constants";
-import { ProfileContext } from "../utils/context/ProfileContext";
 
 export const Message = ({author, text}) => {
-    const {name} = useContext(ProfileContext);
+    
+    const userName = useSelector(selectUserName)
     
     return(
         <div className={author === AUTHORS.HUMAN ? "user" : "bot"}>
-            {author===AUTHORS.HUMAN ? name: author}: {text}
+            {author===AUTHORS.HUMAN ? userName: author}: {text}
         </div>
       )
 }

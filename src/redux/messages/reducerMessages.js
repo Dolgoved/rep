@@ -28,4 +28,4 @@ export const messagesReducer = (state=initialState, action)=>{
             return state;
     }
 };
-console.log(initialState);
+//console.log(initialState);

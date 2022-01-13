@@ -8,4 +8,5 @@ export const addChat = (newChat) =>({
 });
 export const deleteChat = () =>({
     type: DELETE_CHAT,
-})
+});
+

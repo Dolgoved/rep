@@ -23,7 +23,7 @@ function GutterlessList(){
         id: newId,
       }
       dispatch(addChat(newChat));
-      console.log(chats);
+      //console.log(chats);
     };
 
     const onDeleteChat = ()=>{

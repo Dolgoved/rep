@@ -1,3 +1,5 @@
+import { AUTHORS } from "../../utils/constants";
+
 export const ADD_MESSAGE = "ADD_MESSAGE";
 export const DELETE_MESSAGE = "DELETE_MESSAGE";
 
@@ -8,7 +10,7 @@ export const addMessage = (newMessage, chatId) =>({
         message: newMessage,
         chatId,
     }
-})
+});
 
 export const deleteMessage = (messageId, chatId) =>({
     type: DELETE_MESSAGE,
@@ -16,4 +18,17 @@ export const deleteMessage = (messageId, chatId) =>({
         messageId,
         chatId,
     }
-})
+});
+
+export const addMessageWithReply = (newMessage, chatId) => (dispatch) => {
+    dispatch(addMessage(newMessage, chatId));
+    if (newMessage.author !== AUTHORS.BOT){
+        setTimeout(() => {
+            dispatch(addMessage({
+                text: "Ой как интересно! Вы такой умный!",
+                author: AUTHORS.BOT,
+                id: `msg-${Date.now()}`,
+              },chatId));
+        }, 1000);
+    }
+}

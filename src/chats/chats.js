@@ -1,23 +1,22 @@
-import React, {useState, useEffect,  } from 'react';
+import React from 'react';
 import Form from "../form/form";
 import { AUTHORS } from "../utils/constants";
 import {MessageList} from "../messageList/messageList";
 import "../style/style.css";
-import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { useParams, Navigate} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import {addMessage} from "../redux/messages/actionsMessages"
+import {addMessageWithReply} from "../redux/messages/actionsMessages"
 import { selectMessages } from '../redux/messages/selectors';
 
 
 function Chats(){
     const {chatId} = useParams();     // хитрый хук который вытаскивает chatId
-    //const navigate = useNavigate();
     const dispatch = useDispatch();
     const messages = useSelector(selectMessages);
-    
+   
 
     const onAddMessage = (newMessage, chatId)=>{
-      dispatch(addMessage(newMessage, chatId))
+      dispatch(addMessageWithReply(newMessage, chatId))
     }
 
     const handleSubmit = (text) => {
@@ -25,22 +24,24 @@ function Chats(){
       onAddMessage(newMessage, chatId);
     };
   
-    useEffect(() => {
-      let timeout;
-      if (messages[chatId]?.[messages[chatId].length - 1]?.author === AUTHORS.HUMAN) {
-        timeout = setTimeout(() => {
-          onAddMessage({
-            text: "Ой как интересно! Вы такой умный!",
-            author: AUTHORS.BOT,
-            id: `msg-${Date.now()}`,
-          },chatId);
-        }, 1500);
-      }
+    // useEffect(() => {
+    //   let timeout;
+    //   if (messages[chatId]?.[messages[chatId].length - 1]?.author === AUTHORS.HUMAN) {
+    //     timeout = setTimeout(() => {
+    //       onAddMessage({
+    //         text: "Ой как интересно! Вы такой умный!",
+    //         author: AUTHORS.BOT,
+    //         id: `msg-${Date.now()}`,
+    //       },chatId);
+    //     }, 1500);
+    //   }
   
-      return () => {
-        clearTimeout(timeout);
-      };
-    }, [messages]);
+    //   return () => {
+    //     clearTimeout(timeout);
+    //   };
+    // }, [messages]);
+
+
 
     // при введении неправильного адреса возвращает обратно к списку чатов
     if (!messages[chatId]) {
